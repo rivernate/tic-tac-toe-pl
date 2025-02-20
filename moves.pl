@@ -14,3 +14,9 @@ replace([H|T], Index, Element, [H|NewT]) :-
   Index > 0,
   NextIndex is Index - 1,
   replace(T, NextIndex, Element, NewT).
+
+% read_number(-Number)
+% Reads a number from input without requiring a period.
+read_number(Number) :-
+  read_line_to_string(user_input, Input),
+  number_string(Number, Input).

@@ -5,7 +5,7 @@ TESTS=tests/*.pl
 
 # Default target: Run the game
 run:
-	$(PROLOG) -s $(MAIN)
+	$(PROLOG) -g main -t halt -s $(MAIN)
 
 # Run all tests
 test:
