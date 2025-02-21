@@ -1,6 +1,6 @@
 # Prolog Tic Tac Toe with AI
 
-A command-line implementation of Tic Tac Toe in Prolog, featuring an unbeatable AI opponent using the minimax algorithm.
+A command-line implementation of Tic Tac Toe in Prolog, featuring an AI opponent using the minimax algorithm.
 
 ## Game Description
 
@@ -22,7 +22,7 @@ The board positions are numbered 0-8, laid out as follows:
 ## Features
 
 - Clean command-line interface
-- Unbeatable AI using minimax algorithm
+- AI using minimax algorithm
 - Input validation
 - Clear game state display
 - Automatic game end detection
@@ -50,7 +50,7 @@ The board positions are numbered 0-8, laid out as follows:
 1. When prompted, enter a number between 0-8 corresponding to where you want to place your 'x'
 2. The AI will automatically make its move
 3. Continue until either:
-   - You win (highly unlikely against the optimal AI!)
+   - You win
    - The AI wins
    - The game ends in a draw
 
@@ -74,9 +74,17 @@ The game uses several key Prolog concepts:
 
 ## Future Improvements
 
-Potential enhancements that could be added:
+Current limitations and potential enhancements that could be added:
 
-- Alpha-beta pruning for AI optimization
+### AI Improvements
+- Remove or modify the depth penalty in minimax algorithm to prevent suboptimal choices
+- Add position-based scoring to prioritize strategic squares (center and corners)
+- Implement alpha-beta pruning for optimization and potentially deeper search
+- Add special handling for opening moves
+- Enhance scoring system to recognize and prioritize fork opportunities
+- Add heuristics to break ties between moves with equal scores
+
+### General Improvements
 - Difficulty levels
 - Player choice of who goes first
 - Human vs Human mode
