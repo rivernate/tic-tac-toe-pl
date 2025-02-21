@@ -1,24 +1,87 @@
-# Prolog compiled files
+# Prolog specific
 *.qlf  # Quick Load Files (compiled Prolog code)
+*.pl~  # Backup files
+*.xwam # XSB compiled files
+*.wam  # WAM compiled files
+*.qsave # Saved states
 
-# SWI-Prolog history and settings
-*.history
-.swi-prolog
+# SWI-Prolog specific
+.pl-history
+.swi-prolog/
+*.QLF
 
-# MacOS system files
+# Docker specific
+.docker/
+docker-compose.override.yml
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*~
+
+# OS specific
+## MacOS
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
 
-# Windows system files
+## Windows
 Thumbs.db
 ehthumbs.db
-Desktop.ini
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
 
-# VSCode settings (if you use VSCode)
-.vscode/
+## Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
 
-# Logs
+# Logs and databases
 *.log
+*.sqlite
+*.db
 
-# Build artifacts (if you extend the Makefile or add builds)
+# Build and binary directories
 build/
 dist/
+bin/
+target/
+
+# Environment and config files
+.env
+.env.local
+.env.*.local
+*.config
+
+# Test coverage
+coverage/
+.coverage
+htmlcov/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Debug files
+*.debug
+
+# Local development files
+*.local
+local.*

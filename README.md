@@ -26,24 +26,59 @@ The board positions are numbered 0-8, laid out as follows:
 - Input validation
 - Clear game state display
 - Automatic game end detection
+- Docker support for easy deployment
 
 ## Requirements
 
+Choose one of the following methods to run the game:
+
+### Local Installation
 - SWI-Prolog
+
+### Docker Installation
+- Docker
 
 ## How to Run
 
+### Using Local SWI-Prolog
+
 1. Ensure you have SWI-Prolog installed on your system
 2. Navigate to the project directory
-3. Start SWI-Prolog
-4. Load the main program:
-   ```prolog
-   ?- [main].
+3. Run using make:
+   ```bash
+   make run
    ```
-5. Start the game:
-   ```prolog
+   
+   Or manually start SWI-Prolog:
+   ```bash
+   swipl
+   ?- [main].
    ?- main.
    ```
+
+### Using Docker
+
+1. Build the Docker image:
+   ```bash
+   make docker-build
+   ```
+
+2. Run the game:
+   ```bash
+   make docker-run
+   ```
+
+### Running Tests
+
+Local tests:
+```bash
+make test
+```
+
+Docker tests:
+```bash
+make docker-test
+```
 
 ## How to Play
 
@@ -61,6 +96,8 @@ The board positions are numbered 0-8, laid out as follows:
 - `moves.pl`: Move validation and execution
 - `win_conditions.pl`: Game state checking (win/draw/ongoing)
 - `ai.pl`: AI implementation using minimax algorithm
+- `Dockerfile`: Container configuration for Docker deployment
+- `Makefile`: Build and run commands for both local and Docker environments
 
 ## Implementation Details
 
@@ -90,3 +127,9 @@ Current limitations and potential enhancements that could be added:
 - Human vs Human mode
 - Position caching for faster AI responses
 - Comprehensive test suite
+- Multiple container configurations for different use cases
+- CI/CD pipeline for automated testing and deployment
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
