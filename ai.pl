@@ -10,7 +10,7 @@ best_move(Board, Player, BestMove) :-
     Score-Move,
     ( valid_move(Board, Move),
       make_move(Board, Player, Move, NewBoard),
-      minimax(NewBoard, Player, Score)
+      minimax(NewBoard, Player, 0, Score)
     ),
     Moves
   ),
@@ -21,30 +21,34 @@ best_move(Board, Player, BestMove) :-
 valid_move(Board, Position) :-
   nth0(Position, Board, empty).
 
-% minimax(+Board, +Player, -Score)
+% minimax(+Board, +Player, +Depth, -Score)
 % Evaluates the Board and assigns a Score from Players perspective.
-minimax(Board, Player, Score) :-
-  game_over(Board, Result),
-  score(Result, Player, Score), !.
+minimax(Board, Player, Depth, Score) :-
+  game_over(Board, Result), !,
+  score(Result, Player, BaseScore),
+  Score is BaseScore - Depth. % Prioritize quicker wins
 
-minimax(Board, Player, Score) :-
+minimax(Board, Player, Depth, Score) :-
   switch_player(Player, Opponent),
   findall(
     OpponentScore,
     ( valid_move(Board, Move),
       make_move(Board, Opponent, Move, NewBoard),
-      minimax(NewBoard, Opponent, OpponentScore)
+      NextDepth is Depth +1,
+      minimax(NewBoard, Opponent, NextDepth, OpponentScore)
     ),
     Scores
   ),
-  ( Player = x -> max_list(Scores, Score) ; min_list(Scores, Score) ).
+  ( Player = x -> max_list(Scores, Score)
+  ; min_list(Scores, Score)
+  ).
 
 % score(+Result, +Player, -Score)
 % Assigns score based on the Result from Players perspective.
-score(x_wins, x, 1).
-score(o_wins, o, -1).
-score(x_wins, o, -1).
-score(o_wins, x, 1).
+score(x_wins, x, 10).
+score(o_wins, o, 10).
+score(x_wins, o, -10).
+score(o_wins, x, -10).
 score(draw, _, 0).
 score(ongoing, _, 0).
 
